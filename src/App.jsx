@@ -5,6 +5,7 @@ import './App.css'
 import Chart from './components/Chart'
 import Header from './components/Header';
 import { ExpenseInfo } from './components/ExpenseInfo';
+import { Categorys } from './components/Categorys';
 
 function App() {
   const[expenses,setExpenses]=useState([]);
@@ -21,6 +22,7 @@ function App() {
     <ExpenseContextProvider value={{income,setIncome,TotalExpense,balance}}>
     <Header/>
     <ExpenseInfo />
+   <Categorys/>
     </ExpenseContextProvider>
     
      </>
