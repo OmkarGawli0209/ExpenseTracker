@@ -24,7 +24,7 @@ const{setIncome}=useExpense();
             <label>Monthly Income Amount(₹)</label>
             <input type="number"
               placeholder="Enter Your Income(₹)"
-              className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none " min={0} 
+              className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none focus:border-indigo-500" min={0} 
               value={inputIncome}
               onChange={(e)=>setInputIncome(e.target.value)}
               />
