@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { X } from 'reicon-react';
+import { useExpense } from '../context/expenseContext';
+
 
 export const AddExpenses = ({ onClose }) => {
+  const [expense,addExpenses]=useState({
+    title:"",
+    amount:0,
+    category:"",
+    date:""
+  });
+  const{addExpense}=useExpense();
+  const add =(e)=>{
+    e.preventDefault();
+    addExpense({
+        id:crypto.randomUUID(),
+        title:expense.title,
+        amount:Number(expense.amount),
+        category:expense.category,
+        date:expense.date
+    });
+    onClose();
+
+  }
 
   return (
     <div className='fixed inset-0 flex items-center justify-center bg-black/40 p-12 gap-6'>
@@ -11,13 +32,13 @@ export const AddExpenses = ({ onClose }) => {
           <button className="" onClick={onClose}><X size={18} /></button>
         </div>
         <div>
-          <form className='flex flex-col gap-4' onSubmit={(e) => { e.preventDefault() }}>
+          <form className='flex flex-col gap-4' onSubmit={add}>
             <label >Expense Title</label>
-            <input type="text" className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none focus:border-green-500" />
+            <input type="text" className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none focus:border-green-500" value={expense.title} onChange={(e)=>addExpenses({...expense,title:e.target.value})}/>
             <label >Amount (₹)</label>
-            <input type="number" className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none focus:border-green-500" min={0} />
+            <input type="number" className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none focus:border-green-500" min={0} value={expense.amount} onChange={(e)=>addExpenses({...expense,amount:e.target.value})}/>
             <label>Category</label>
-            <select name="category" id="category" className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none">
+            <select name="category" id="category" className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none " value={expense.category} onChange={(e)=>addExpenses({...expense,category:e.target.value})}>
               <option value="Food">Food</option>
               <option value="Transport">Transport</option>
               <option value="Shopping">Shopping</option>
@@ -29,7 +50,7 @@ export const AddExpenses = ({ onClose }) => {
             </select>
 
             <label >Date</label>
-            <input type="date" className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none focus:border-green-500" />
+            <input type="date" className="w-full rounded-lg border border-gray-400 py-2 px-3 outline-none focus:border-green-500" value={expense.date} onChange={(e)=>{addExpenses({...expense,date:e.target.value})}}/>
             <div className="mt-5 flex justify-end gap-3">
               <button className="px-4 py-2 rounded-lg border border-green-400 text-[#059669] transition hover:bg-[#059669] hover:text-white ">Add Expense</button>
               <button className="px-4 py-2 rounded-lg border border-red-200 text-red-500 transition hover:bg-red-500 hover:text-white" type="submit" onClick={onClose}>Cancel</button>

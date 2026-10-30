@@ -5,7 +5,7 @@ import IncomePopUp from "./popup/IncomePopUp";
 import { useExpense } from "./context/expenseContext";
 
 export const ExpenseInfo = () => {
-  const {income,TotalExpense,balance} = useExpense();
+  const {income,TotalExpense,balance,expenses} = useExpense();
   const[showIncome,setShowIncome]=useState(false);
 
   return (
@@ -28,7 +28,7 @@ export const ExpenseInfo = () => {
         title={"Total Expenses"}
         amount={TotalExpense}
       >
-        <p className="text-sm text-red-500">0 transactions recorded </p>
+        <p className="text-sm text-red-500"> {expenses.length} Transactions recorded </p>
       </SummaryCard>
       <SummaryCard
         icon={<Wallet5 size={24} color="orange" />}

@@ -1,6 +1,6 @@
 import  {createContext,useContext } from "react";
 export const expenses = createContext({
-  expense:[
+  expenses:[
     {
       id:1,
       title:"Burger",

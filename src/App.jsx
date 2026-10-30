@@ -11,15 +11,25 @@ function App() {
   const[expenses,setExpenses]=useState([]);
   const [income,setIncome] = useState(0);
   const TotalExpense = expenses.reduce(
-    (sum,expense)=> sum+ expenses.amount,0
+    (sum,expenses)=> sum+ expenses.amount,0
   );
   const balance= income - TotalExpense;
-  console.log(balance);
-  console.log(TotalExpense);
+  // console.log(balance);
+  // console.log(TotalExpense);
+  const addExpense = (expense) => {
+    setExpenses((prev)=>[...prev,expense]);
+    
+
+  }
+  useEffect(() => {
+   console.log(expenses.length)
+    
+  }, [expenses])
+  
  
   return (
     <>
-    <ExpenseContextProvider value={{income,setIncome,TotalExpense,balance}}>
+    <ExpenseContextProvider value={{income,setIncome,TotalExpense,balance,addExpense,expenses}}>
     <Header/>
     <ExpenseInfo />
    <Categorys/>
