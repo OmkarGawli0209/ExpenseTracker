@@ -1,7 +1,9 @@
 import React from 'react'
 import { Pen, Trash5} from 'reicon-react'
+import { useExpense } from './context/expenseContext'
 
 export const Categorys = () => {
+  const{expenses}=useExpense();
   return (
     <main className='w-full max-w-7xl mx-auto'>
       <div className='mb-6 mx-4 flex flex-col items-start gap-4  sm:flex-row sm:items-center sm:justify-between'>
@@ -34,7 +36,7 @@ export const Categorys = () => {
 
           </select>
         </div>
-        {/* <div className='mt-6 overflow-x-auto'>
+        <div className='mt-6 overflow-x-auto'>
           <table className='w-full table-fixed text-left [&_th]:py-4 [&_th]:px-4 [&_td]:px-4 [&_td]:py-4'>
            <thead>
             <tr className='border-b border-slate-200 bg-slate-50'>
@@ -45,18 +47,16 @@ export const Categorys = () => {
               <th className='w-[20%] px-4 py-4'>ACTIONS</th>
 
             </tr></thead>
-
-            <tr >
-              <td>
-                Grocery Store
-              </td>
-              <td>
-                Food
-              </td>
-              <td>
-                10 Oct 2026
-              </td>
-              <td>₹1200</td>
+           <tbody>
+            {expenses.map((e)=>(
+              <tr key={e.id} className='border-b border-slate-100'>
+              <td>{e.title}</td>
+              <td>{e.category}</td>
+              <td>{e.date}</td>
+              <td>₹{e.amount}</td>
+              
+              
+              
               <td className='flex gap-3'>
                 <button><Pen size={24} /></button>
                 <button><Trash5 size={24} /></button>
@@ -64,9 +64,13 @@ export const Categorys = () => {
             </tr>
 
 
+            )) }
+            
 
+
+</tbody>
           </table>
-        </div> */}
+        </div> 
         <div className='overflow-x-auto mt-6'>
           <ol className='w-full'>
             <li></li>

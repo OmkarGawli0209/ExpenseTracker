@@ -32,8 +32,10 @@ function App() {
     <ExpenseContextProvider value={{income,setIncome,TotalExpense,balance,addExpense,expenses}}>
     <Header/>
     <ExpenseInfo />
-   <Categorys/>
+    <Categorys/>
+     <Chart/>
     </ExpenseContextProvider>
+    
     
      </>
   )
