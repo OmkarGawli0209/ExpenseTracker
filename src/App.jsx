@@ -8,8 +8,14 @@ import { ExpenseInfo } from './components/ExpenseInfo';
 import { Categorys } from './components/Categorys';
 
 function App() {
-  const[expenses,setExpenses]=useState([]);
-  const [income,setIncome] = useState(0);
+  const[expenses,setExpenses]=useState(()=>{
+    const savedExpense = localStorage.getItem("expenses");
+    return savedExpense ? JSON.parse(savedExpense) :[];
+  });
+  const [income,setIncome] = useState(()=>{
+    const savedIncome = localStorage.getItem("income");
+    return savedIncome ? JSON.parse(savedIncome) : 0;
+  });
   const TotalExpense = expenses.reduce(
     (sum,expenses)=> sum+ expenses.amount,0
   );
@@ -22,9 +28,14 @@ function App() {
 
   }
   useEffect(() => {
-   console.log(expenses.length)
+   localStorage.setItem('expenses',JSON.stringify(expenses))
     
   }, [expenses])
+
+  useEffect(() => {
+   localStorage.setItem('income',JSON.stringify(income))
+    
+  }, [income])
   
  
   return (
@@ -32,8 +43,9 @@ function App() {
     <ExpenseContextProvider value={{income,setIncome,TotalExpense,balance,addExpense,expenses}}>
     <Header/>
     <ExpenseInfo />
-    <Categorys/>
      <Chart/>
+    <Categorys/>
+    
     </ExpenseContextProvider>
     
     
