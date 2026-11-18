@@ -25,7 +25,7 @@ export const AddExpenses = ({ onClose }) => {
   }
 
   return (
-    <div className='fixed inset-0 flex items-center justify-center bg-black/40 p-12 gap-6'>
+    <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-12 gap-6'>
       <div className='w-full max-w-lg rounded-xl bg-white p-6 flex flex-col gap-4'>
         <div className="header flex justify-between border-b border-gray-100 p-5">
           <p className="font-bold ">Add New Expense</p>

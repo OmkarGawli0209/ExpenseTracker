@@ -7,7 +7,7 @@ const IncomePopUp = ({ onClose }) => {
 const [inputIncome,setInputIncome]=useState("");
 const{setIncome}=useExpense();
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/40 p-10">
+    <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 p-10">
       <div className="w-full max-w-sm rounded-xl bg-white p-6 flex flex-col gap-6">
         <div className="header flex justify-between border-b border-gray-100 p-5">
           <p className="font-bold ">Set Total Income</p>

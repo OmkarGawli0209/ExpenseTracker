@@ -79,7 +79,7 @@ total,
      <div className='bg-white rounded-xl p-5 shadow-sm'>
       <h2 className='text-lg font-bold mb-4'>Monthly Expenses</h2>
      <ResponsiveContainer width={"100%"} height={300}>
-<BarChart data={monthlyData}>
+<BarChart data={monthlyData} >
         <CartesianGrid strokeDasharray="3 3" />
 
         <XAxis dataKey="month" />
